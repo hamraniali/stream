@@ -25,5 +25,7 @@ Route::group(['namespace' => 'Api'] , function(){
         Route::get('/advertisings' , 'AdvertisingController@index');
         Route::get('/advertisings/{id}' , 'AdvertisingController@show');
         Route::get('/category/{id}' , 'CategoryController@showAds');
+        Route::get('/search' , 'AdvertisingController@search');
+        Route::get('/category' , 'CategoryController@index');
     });
 });

@@ -23,6 +23,7 @@ class CreateAdvertisingsTable extends Migration
             $table->text('address');
             $table->string('price');
             $table->string('type');
+            $table->boolean('active')->default(0);
             $table->integer('like_count')->unsigned()->default(0);
             $table->integer('shared_count')->unsigned()->default(0);
             $table->timestamps();

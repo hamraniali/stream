@@ -22,4 +22,21 @@ class Advertising extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('active' , 1);
+    }
+
+    public function scopeSearch($query , $input)
+    {
+        if (isset($input['search']) && !empty($input['search'])){
+            $query->where('title' , 'LIKE' , '%' . $input['search'] . '%');
+        }
+        if (isset($input['category']) && !empty($input['category'])){
+            $query->where('category_id' , $input['category']);
+        }
+
+        $query->active();
+    }
 }

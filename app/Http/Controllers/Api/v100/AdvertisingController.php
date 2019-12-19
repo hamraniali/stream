@@ -22,6 +22,11 @@ class AdvertisingController extends Controller
             return response()->json(['status' => 'success' , 'data' => $advertising]);
         }
         return response()->json(['status' => 'error' , 'message' => 'آگهی یافت نشد']);
+    }
 
+    public function search(Request $request)
+    {
+        $ads = Advertising::active()->search($request->all())->latest()->paginate(20);
+        return response()->json(['status' => 'success' , 'data' => $ads]);
     }
 }
