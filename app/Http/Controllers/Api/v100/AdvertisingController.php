@@ -29,4 +29,20 @@ class AdvertisingController extends Controller
         $ads = Advertising::active()->search($request->all())->latest()->paginate(20);
         return response()->json(['status' => 'success' , 'data' => $ads]);
     }
+
+    public function store(Request $request)
+    {
+        $validated_data = $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'category_id' => 'required',
+            'images' => 'required',
+            'address' => 'required',
+            'price' => 'required',
+            'type' => 'required'
+        ]);
+        $validated_data['user_id'] = $request->user()->id;
+        $ad = Advertising::create($validated_data);
+        return response()->json(['status' => 'success' , 'message' => 'آگهی با موفقیت ثبت شد و پس از تایید نمایش داده می شود']);
+    }
 }

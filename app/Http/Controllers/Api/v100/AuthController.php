@@ -23,7 +23,7 @@ class AuthController extends Controller
         $user = User::create($validatedData);
         $access_token = $user->createToken('authToken')->accessToken;
 
-        return response()->json(['status' => 'success','user' => $user , 'access_token' => $access_token]);
+        return response()->json(['status' => 'success', 'user' => $user, 'access_token' => $access_token]);
     }
 
     public function login(Request $request)
@@ -33,12 +33,18 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        if (!auth()->attempt($login_date)){
-            return response()->json(['status' => 'error' , 'message' => 'شماره دانشجویی یا رمز عبور اشتباه است']);
+        if (!auth()->attempt($login_date)) {
+            return response()->json(['status' => 'error', 'message' => 'شماره دانشجویی یا رمز عبور اشتباه است']);
         }
 
         $access_token = auth()->user()->createToken('authToken')->accessToken;
 
-        return response(['status' => 'success' , 'user' => auth()->user() , 'access_token' => $access_token]);
+        return response(['status' => 'success', 'user' => auth()->user(), 'access_token' => $access_token]);
+    }
+
+    public function logout(Request $request)
+    {
+        $request->user()->token()->revoke();
+        return response()->json(['status' => 'success', 'message' => 'شما با موفقیت خارج شدید']);
     }
 }
