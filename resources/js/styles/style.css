@@ -1,0 +1,37 @@
+:root {
+    --tenser_back: linear-gradient(to right, #ff6f00, #ff9100);
+    --white_back : 'white'
+}
+
+.white_color {
+    color: white !important;
+}
+.content_margin {
+    margin-top: 58px !important;
+}
+.my_font {
+    font-family: IRANSans !important;
+}
+.prim_color {
+    color: #8e8e8e;
+    font-weight: bold !important;
+}
+.on_focus{
+
+}
+.on_focus:focus-within{
+    box-shadow: 0 0 0 4px #ff9100;
+    outline: 0;
+    background-color: #e8e8e8;
+}
+
+.no_margin {
+    margin: 0 !important;
+}
+.no_padding {
+    padding: 0 !important;
+}
+.items {
+    font-size: 14px;
+    font-weight: 500;
+}
