@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { makeStyles } from '@material-ui/core'
+import Content from "./Content";
 // import {
 //     BrowserRouter as Router,
 //     Switch,
@@ -13,6 +13,7 @@ export default function App() {
     return (
         <React.Fragment>
             <Header />
+            <Content />
         </React.Fragment>
     );
 }

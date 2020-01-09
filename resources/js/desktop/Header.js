@@ -93,9 +93,10 @@ const useStyles = makeStyles(theme => ({
     },
     paperStyle : {
         backgroundColor : "white",
-        border : '4px solid #e0e0e0',
-        boxShadow : '0 0 0 #ffff',
-        borderRadius : '7px'
+        border : '1px solid rgb(239, 239, 239)',
+        boxShadow : '0 3px 6px rgba(0,0,0,.18)',
+        borderRadius : '7px',
+        outline : 'none',
     }
 }));
 
@@ -123,32 +124,87 @@ HideOnScroll.propTypes = {
     window: PropTypes.func,
 };
 
-const Header = (props) => {
+const MoreHorizon = () => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef(null);
-
     const handleToggle = () => {
         setOpen(prevOpen => !prevOpen);
     };
-
     const handleClose = event => {
         if (anchorRef.current && anchorRef.current.contains(event.target)) {
             return;
         }
-
         setOpen(false);
     };
-
     function handleListKeyDown(event) {
         if (event.key === 'Tab') {
             event.preventDefault();
             setOpen(false);
         }
     }
-
-    // return focus to the button when we transitioned from !open -> open
     const prevOpen = React.useRef(open);
+
+    React.useEffect(() => {
+        if (prevOpen.current === true && open === false) {
+            anchorRef.current.focus();
+        }
+
+        prevOpen.current = open;
+    }, [open]);
+
+    return (
+      <React.Fragment>
+          <IconButton edge="start" className={[classes.menuButton , 'on_focus'].join(' ')} aria-label="menu"
+                      ref={anchorRef}
+                      aria-controls={open ? 'menu-list-grow' : undefined}
+                      aria-haspopup="true"
+                      onClick={handleToggle}>
+              <MoreHoriz className="prim_color"/>
+          </IconButton>
+          <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+              {({ TransitionProps, placement }) => (
+                  <Grow
+                      {...TransitionProps}
+                      style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+                  >
+                      <Paper className={[classes.paperStyle , 'no_padding'].join(' ')}>
+                          <ClickAwayListener onClickAway={handleClose}>
+                              <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown} className='no_padding'>
+                                  <MenuItem onClick={handleClose} className={['my_font' , 'items']} style={{borderBottom : '1px solid rgb(239, 239, 239)'}}>دانلود اپلیکیشن</MenuItem>
+                                  <MenuItem onClick={handleClose} className={['my_font' , 'items']} style={{borderBottom : '1px solid rgb(239, 239, 239)'}}>ایتم دوم</MenuItem>
+                                  <MenuItem onClick={handleClose} className={['my_font' , 'items']}>مورد سوم</MenuItem>
+                              </MenuList>
+                          </ClickAwayListener>
+                      </Paper>
+                  </Grow>
+              )}
+          </Popper>
+      </React.Fragment>
+    );
+}
+
+const LoginPaper = () => {
+    const classes = useStyles();
+    const [open, setOpen] = React.useState(false);
+    const anchorRef = React.useRef(null);
+    const handleToggle = () => {
+        setOpen(prevOpen => !prevOpen);
+    };
+    const handleClose = event => {
+        if (anchorRef.current && anchorRef.current.contains(event.target)) {
+            return;
+        }
+        setOpen(false);
+    };
+    function handleListKeyDown(event) {
+        if (event.key === 'Tab') {
+            event.preventDefault();
+            setOpen(false);
+        }
+    }
+    const prevOpen = React.useRef(open);
+
     React.useEffect(() => {
         if (prevOpen.current === true && open === false) {
             anchorRef.current.focus();
@@ -159,36 +215,47 @@ const Header = (props) => {
 
     return (
         <React.Fragment>
+            <IconButton edge="start" className={[classes.menuButton , 'on_focus'].join(' ')} aria-label="menu"
+                        ref={anchorRef}
+                        aria-controls={open ? 'menu-list-grow' : undefined}
+                        aria-haspopup="true"
+                        onClick={handleToggle}>
+                <PersonOutline className="prim_color"/>
+            </IconButton>
+            <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+                {({ TransitionProps, placement }) => (
+                    <Grow
+                        {...TransitionProps}
+                        style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+                    >
+                        <Paper className={[classes.paperStyle , 'no_padding'].join(' ')}>
+                            <ClickAwayListener onClickAway={handleClose}>
+                                <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown} className='no_padding'>
+                                    <MenuItem onClick={handleClose} className={['my_font' , 'items']} style={{borderBottom : '1px solid rgb(239, 239, 239)'}}>استریم من</MenuItem>
+                                    <MenuItem onClick={handleClose} className={['my_font' , 'items']} style={{borderBottom : '1px solid rgb(239, 239, 239)'}}>ثبت نام</MenuItem>
+                                    <MenuItem onClick={handleClose} className={['my_font' , 'items']} style={{borderBottom : '1px solid rgb(239, 239, 239)'}}>ورود</MenuItem>
+                                    <MenuItem onClick={handleClose} className={['my_font' , 'items']}>خروج</MenuItem>
+                                </MenuList>
+                            </ClickAwayListener>
+                        </Paper>
+                    </Grow>
+                )}
+            </Popper>
+        </React.Fragment>
+    );
+}
+
+const Header = (props) => {
+    const classes = useStyles();
+
+    return (
+        <React.Fragment>
             <CssBaseline />
             <HideOnScroll {...props}>
             <AppBar className={classes.header}>
                 <Container fixed className={classes.headContent}>
                     <Toolbar>
-                        <IconButton edge="start" className={[classes.menuButton , 'on_focus'].join(' ')} aria-label="menu"
-                                    ref={anchorRef}
-                                    aria-controls={open ? 'menu-list-grow' : undefined}
-                                    aria-haspopup="true"
-                                    onClick={handleToggle}>
-                            <MoreHoriz className="prim_color"/>
-                        </IconButton>
-                        <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
-                            {({ TransitionProps, placement }) => (
-                                <Grow
-                                    {...TransitionProps}
-                                    style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
-                                >
-                                    <Paper className={[classes.paperStyle , 'no_padding'].join(' ')}>
-                                        <ClickAwayListener onClickAway={handleClose}>
-                                            <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                                                <MenuItem onClick={handleClose} className={['my_font' , 'items']}>دانلود اپلیکیشن</MenuItem>
-                                                <MenuItem onClick={handleClose} className={['my_font' , 'items']}>My account</MenuItem>
-                                                <MenuItem onClick={handleClose} className={['my_font' , 'items']}>Logout</MenuItem>
-                                            </MenuList>
-                                        </ClickAwayListener>
-                                    </Paper>
-                                </Grow>
-                            )}
-                        </Popper>
+                        <MoreHorizon />
                         <Typography className={classes.title}>
                             لوگو
                         </Typography>
@@ -209,9 +276,7 @@ const Header = (props) => {
                         <IconButton className='on_focus'>
                             <AddOutlined className="prim_color"/>
                         </IconButton>
-                        <IconButton className='on_focus'>
-                            <PersonOutline className="prim_color"/>
-                        </IconButton>
+                        <LoginPaper />
                     </Toolbar>
                 </Container>
             </AppBar>
