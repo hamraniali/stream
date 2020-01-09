@@ -55,7 +55,7 @@ const IndexSkeleton = () => {
             <Grid container className={classes.root} spacing={0}>
 
                 {Array.from({length:12}).map((value , counter = 0) => (
-                    <Grid key={counter++} item xs={6} sm={3}>
+                    <Grid key={counter++} item xs={12} sm={6} md={3}>
                         <Card className={classes.card}>
                             <CardHeader
                                 title={

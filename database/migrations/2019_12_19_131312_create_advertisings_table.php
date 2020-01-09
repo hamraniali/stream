@@ -21,7 +21,7 @@ class CreateAdvertisingsTable extends Migration
             $table->text('description');
             $table->text('images');
             $table->text('address');
-            $table->string('price');
+            $table->string('price')->default(0);
             $table->string('type');
             $table->boolean('active')->default(0);
             $table->integer('like_count')->unsigned()->default(0);

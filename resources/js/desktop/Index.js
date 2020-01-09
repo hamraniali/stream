@@ -22,6 +22,8 @@ import BookmarkBorder from '@material-ui/icons/BookmarkBorder';
 import ShareIcon from '@material-ui/icons/Share';
 import '../styles/style.css'
 import Button from '@material-ui/core/Button'
+import URL from "../url";
+import Skeleton from '@material-ui/lab/Skeleton'
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -45,10 +47,20 @@ const Index = () => {
     const [failed , setFailed] = useState(false)
 
     useEffect(() => {
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+        axios.get(`${URL}/advertisings` , {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
             .then(res => {
-                setItems(res.data)
+                if (res.data.status == 'success'){
+                    setItems(res.data.data.data)
+                }
+                else{
+                    setFailed(true)
+                }
                 setLoading(false)
+                console.log(res.data.data.data)
             })
             .catch(err => {
                 setFailed(true)
@@ -86,25 +98,29 @@ const Index = () => {
 
                     {items.map(item => {
                         return (
-                            <Grid key={item.id} item xs={6} sm={3}>
+                            <Grid key={item.id} item xs={12} md={3} sm={6}>
                             <Card className={classes.card}>
                                 <CardHeader
                                     title={item.title.substring(0 , 21) + '...'}
-                                    subheader={` دقیقه پیش ${item.id}`}
+                                    subheader={
+                                        <Typography component='span' style={{ fontWeight : 700 , fontSize : '12px' , color : '#8e8e8e' }}>
+                                             دقیقه پیش{item.created_at}
+                                        </Typography>
+                                    }
                                     className='my_font'
                                 />
-                                <CardMedia
-                                    className={classes.media}
-                                    image={item.thumbnailUrl}
-                                    title={item.title}
-                                />
+                                {/*<CardMedia*/}
+                                {/*    className={classes.media}*/}
+                                {/*    image={}*/}
+                                {/*    title={item.title}*/}
+                                {/*/>*/}
+                                <Skeleton variant='rect' style={{ height : '200px' }}/>
                                 <CardContent>
-                                    <Typography variant="body2" color="textSecondary" component="p" className='my_font'>
-                                        {item.title.substring(0 , 38) + '...'}
-                                    </Typography>
+                                    { item.type == 'فروشی' ? ` ${item.price} هزار تومان ` : ` ${item.type}` }
                                 </CardContent>
                                 <CardActions disableSpacing>
-                                    <IconButton aria-label="اضافه کردن به موردعلاقه ها" className='on_focus'>
+                                    <div style={{ width : '100%' , backgroundColor : '#e8e8e8' , height : '1px' }}></div>
+                                    <IconButton aria-label="نشانه گذاری" className='on_focus'>
                                         <BookmarkBorder />
                                     </IconButton>
                                 </CardActions>
