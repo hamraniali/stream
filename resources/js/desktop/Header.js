@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
         borderBottom : '1px solid #efefef',
     },
     headContent : {
-        padding : 0
+        paddingRight : theme.spacing(0),
     },
     search: {
         flexGrow: 1,
@@ -253,8 +253,8 @@ const Header = (props) => {
             <CssBaseline />
             <HideOnScroll {...props}>
             <AppBar className={classes.header}>
-                <Container fixed className={classes.headContent}>
-                    <Toolbar>
+                <Container fixed className={classes.headContent} style={{ paddingLeft : '0' }}>
+                    <Toolbar style={{ paddingRight : '0' , paddingLeft : '0'}}>
                         <MoreHorizon />
                         <Typography className={classes.title}>
                             لوگو
