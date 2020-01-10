@@ -8,11 +8,9 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import '../styles/style.css'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
-import Box from '@material-ui/core/Box'
 import IndexSkeleton from "./skeletons/IndexSkeleton";
 import FilterBox from "./FilterBox";
 import axios from 'axios'
@@ -20,12 +18,9 @@ import Refresh from '@material-ui/icons/Refresh'
 import CardActions from '@material-ui/core/CardActions';
 import BookmarkBorder from '@material-ui/icons/BookmarkBorder';
 import Bookmark from '@material-ui/icons/Bookmark';
-import ShareIcon from '@material-ui/icons/Share';
 import '../styles/style.css'
-import Button from '@material-ui/core/Button'
 import URL from "../url";
 import Skeleton from '@material-ui/lab/Skeleton'
-import {SnackbarProvider, useSnackbar} from 'notistack';
 
 
 const useStyles = makeStyles(theme => ({
@@ -46,16 +41,9 @@ const useStyles = makeStyles(theme => ({
 const BookMarkButton = (props) => {
     const classes = useStyles()
     const [selected, setSelected] = useState(false)
-    const {enqueueSnackbar} = useSnackbar();
-
-    const handleClickVariant = variant => () => {
-        // variant could be success, error, warning, info, or default
-        enqueueSnackbar('This is a success message!', {variant});
-    };
 
     const handleFilterClick = () => {
         setSelected(!selected);
-        handleClickVariant('success')
     }
 
     return (
@@ -112,7 +100,6 @@ const Index = () => {
         )
     } else {
         return (
-            <SnackbarProvider maxSnack={3}>
                 <Container fixed className='content_margin' style={{paddingRight: 0, paddingLeft: 0}}>
                     <FilterBox/>
                     <Grid container className={classes.root} spacing={0}>
@@ -153,7 +140,7 @@ const Index = () => {
                                                 <div style={{
                                                     width: '100%',
                                                     backgroundColor: '#e8e8e8',
-                                                    height: '1px'
+                                                    height: '1px',
                                                 }}></div>
 
                                                 <BookMarkButton data={item}/>
@@ -165,8 +152,8 @@ const Index = () => {
                             }
                         )}
                     </Grid>
+                    <br/>
                 </Container>
-            </SnackbarProvider>
         )
     }
 }

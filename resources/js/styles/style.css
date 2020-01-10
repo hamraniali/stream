@@ -46,3 +46,7 @@
     background-color: #ff9100;
     color : white;
 }
+
+*:focus {
+    outline: none;
+}

@@ -1,22 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Content from "./Content";
-// import {
-//     BrowserRouter as Router,
-//     Switch,
-//     Link,
-//     Route
-// } from 'react-router-dom'
 import Header from './Header'
+import Index from "./Index";
+import Register from "./Register";
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch
+} from 'react-router-dom'
 
 export default function App() {
     return (
         <React.Fragment>
-            <Header />
-            <Content />
+            <Router>
+                <Header />
+                <Switch>
+                    <Route path='//' component={Index} />
+                    <Route path='/register' component={Register} />
+                </Switch>
+            </Router>
         </React.Fragment>
     );
 }
+
 if (document.getElementById('app')) {
     ReactDOM.render(<App/>, document.getElementById('app'));
 }

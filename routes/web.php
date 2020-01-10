@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/{path?}' , [
+    'uses' => 'ReactController@show',
+    'as' => 'react',
+    'where' => ['path' => '.*']
+]);
