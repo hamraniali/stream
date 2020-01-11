@@ -272,7 +272,10 @@ const Header = (props) => {
                             <MoreHorizon/>
                             <Typography className={classes.title}>
                                 <Link to='/' style={{color: 'black', textDecoration: 'none'}}>
-                                    لوگو
+
+                                    <img src="/images/photo_2020-01-12_00-46-00.jpg" alt="استریم"
+                                         style={{height: '36px', verticalAlign: 'bottom'}}/>
+
                                 </Link>
                             </Typography>
                             <div className={[classes.search, "on_focus"].join(' ')}>

@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
-import {makeStyles, Container, Button} from '@material-ui/core'
+import {makeStyles, Container, Button , Alert} from '@material-ui/core'
+import axios from 'axios'
+import URL from "../url";
 
 const useStyle = makeStyles(theme => ({
     root: {
@@ -46,22 +48,51 @@ const useStyle = makeStyles(theme => ({
 const Register = () => {
     const classes = useStyle()
     const [name , setName] = useState(null)
-    const [nameErr , setNameErr] = useState(null)
     const [family , setFamily] = useState(null)
-    const [familyErr , setFamilyErr] = useState(null)
     const [stuNumber , setStuNumber] = useState(null)
-    const [stuNumberErr , setStuNumberErr] = useState(null)
     const [phone , setPhone] = useState(null)
-    const [phoneErr , setPhoneErr] = useState(null)
     const [email , setEmail] = useState(null)
-    const [emailErr , setEmailErr] = useState(null)
     const [password , setPassword] = useState(null)
-    const [passwordErr , setPasswordErr] = useState(null)
     const [confirmPass , setConfirmPass] = useState(null)
-    const [confirmPassErr , setConfirmPassErr] = useState(null)
 
     const HandleForm = () => {
-
+        if (name == null){ setName('') }
+        if (family == null){ setFamily('') }
+        if (email == null){ setEmail('') }
+        if (phone == null){ setPhone('') }
+        if (stuNumber == null){ setStuNumber('') }
+        if (password == null){ setPassword('') }
+        if (confirmPass == null){ setConfirmPass('') }
+        if (name != null && name != '' &&
+            family != null && family != '' &&
+            email != null && name != '' &&
+            phone != null && name != '' &&
+            stuNumber != null && stuNumber != '' &&
+            password != null && password != '' &&
+            confirmPass != null && confirmPass != ''
+        ){
+            if (password == confirmPass){
+                axios.post(`${URL}/register` , {
+                    name : name,
+                    family : family,
+                    email : email,
+                    stu_number : stuNumber,
+                    phone : phone,
+                    password : password,
+                    password_confirmation : confirmPass
+                } , {
+                    headers : {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                    .then(res => {
+                        console.log(res.data)
+                    })
+                    .catch(err => {
+                        console.log(err.response.data.errors)
+                    })
+            }
+        }
     }
 
     return (
@@ -81,11 +112,12 @@ const Register = () => {
                     <span style={ phone != '' ? {color: '#8e8e8e'} : {color : '#ef5662'}}>شماره تماس</span>
                     <input type="text" className={phone != '' ? classes.textBox : classes.textFieldErr} onChange={e => {setPhone(e.target.value)}} placeholder="شماره تماس خود را وارد کنید..."/>
                     <span style={ email != '' ? {color: '#8e8e8e'} : {color : '#ef5662'}}>ایمیل</span>
-                    <input type="text" className={email != '' ? classes.textBox : classes.textFieldErr} onChange={e => {setEmail(e.target.value)}} placeholder="ایمیل خود را وارد کنید..."/>
+                    <input type="email" className={email != '' ? classes.textBox : classes.textFieldErr} onChange={e => {setEmail(e.target.value)}} placeholder="ایمیل خود را وارد کنید..."/>
                     <span style={ password != '' ? {color: '#8e8e8e'} : {color : '#ef5662'}}>رمز</span>
-                    <input type="text" className={password != '' ? classes.textBox : classes.textFieldErr} onChange={e => {setPassword(e.target.value)}} placeholder="رمز خود را وارد کنید..."/>
+                    <input type="password" className={password != '' ? classes.textBox : classes.textFieldErr} onChange={e => {setPassword(e.target.value)}} placeholder="رمز خود را وارد کنید..."/>
                     <span style={ confirmPass != '' ? {color: '#8e8e8e'} : {color : '#ef5662'}}>تکرار رمز</span>
-                    <input type="text" className={confirmPass != '' ? classes.textBox : classes.textFieldErr} onChange={e => {setConfirmPass(e.target.value)}} placeholder="تکرار رمز خود را وارد کنید..."/>
+                    <input type="password" className={confirmPass != '' ? classes.textBox : classes.textFieldErr} onChange={e => {setConfirmPass(e.target.value)}} placeholder="تکرار رمز خود را وارد کنید..."/>
+                    {password != confirmPass ? <span className={classes.error}>تکرار رمز با رمز برابر نیست!</span> : <div></div>}
                     <Button
                         onClick={() => HandleForm()}
                         style={{

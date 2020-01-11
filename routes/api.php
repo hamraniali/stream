@@ -29,5 +29,6 @@ Route::group(['namespace' => 'Api'] , function(){
         Route::get('/category' , 'CategoryController@index');
         Route::post('/logout' , 'AuthController@logout')->middleware('auth:api');
         Route::post('/addAd' , 'AdvertisingController@store')->middleware('auth:api');
+        Route::post('/sendcode' , 'VerificationController@send')->middleware('auth:api');
     });
 });
