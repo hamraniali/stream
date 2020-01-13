@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('stu_number')->unique();
             $table->string('phone')->unique();
             $table->string('email');
+            $table->string('degree_id');
+            $table->foreign('degree_id')->on('degrees')->references('id')->onDelete('cascade');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

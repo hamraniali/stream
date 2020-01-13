@@ -2,19 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4ebab6b-29e9-4e0b-9aea-4857060b2633" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/stream.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/stream.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/v100/AdvertisingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/v100/AdvertisingController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/v100/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/v100/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/desktop/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/desktop/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/desktop/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/desktop/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/styles/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/styles/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/fa/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fa/validation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,6 +191,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -260,6 +256,9 @@
       <workItem from="1578668785768" duration="14100000" />
       <workItem from="1578769004383" duration="11092000" />
       <workItem from="1578780269246" duration="6316000" />
+      <workItem from="1578829386715" duration="1138000" />
+      <workItem from="1578894580943" duration="5376000" />
+      <workItem from="1578931732636" duration="12921000" />
     </task>
     <servers />
   </component>
@@ -308,25 +307,29 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="471" y="306" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1578052632846" />
-    <state x="648" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1578780269255">
+    <state x="648" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1578931733317">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="648" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1578780269255" />
+    <state x="648" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1578931733317" />
     <state x="560" y="162" width="857" height="781" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1578680139950">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="560" y="162" width="857" height="781" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1578680139950" />
-    <state x="630" y="125" width="727" height="855" key="find.popup" timestamp="1578772470980">
+    <state x="760" y="467" width="457" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1578894615623">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="630" y="125" width="727" height="855" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1578772470980" />
+    <state x="760" y="467" width="457" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.1053@67.27.1853.1053" timestamp="1578894615623" />
+    <state x="630" y="125" width="727" height="855" key="find.popup" timestamp="1578938520372">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="630" y="125" width="727" height="855" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1578938520372" />
     <state x="657" y="253" key="run.anything.popup" timestamp="1578387785263">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="657" y="253" key="run.anything.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1578387785263" />
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1578781536938">
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1578939209938">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1578781536938" />
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1578939209938" />
   </component>
 </project>

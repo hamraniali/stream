@@ -17,7 +17,8 @@ class AuthController extends Controller
             'email' => 'required|email',
             'phone' => 'required|unique:users',
             'stu_number' => 'required|unique:users',
-            'password' => 'required|confirmed'
+            'password' => 'required|confirmed|min:6',
+            'degree_id' => 'required',
         ]);
         $validatedData['password'] = bcrypt($request->password);
         $user = User::create($validatedData);
